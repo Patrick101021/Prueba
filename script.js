@@ -1,23 +1,41 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const cuadro1 = document.getElementById("cuadro1");
-    const cuadro2 = document.getElementById("cuadro2");
-    const cuadro3 = document.getElementById("cuadro3");
-    const cuadro4 = document.getElementById("cuadro4");
-
-    // Redirigir al hacer clic en los cuadros
-    cuadro1.addEventListener("click", () => window.location.href = "mailto:tuemail@example.com");
-    cuadro2.addEventListener("click", () => window.open("https://x.com/MesQueUnIdolo", "_blank"));
-    cuadro3.addEventListener("click", () => window.open("https://www.facebook.com/patrick.alvarado.1804?rdid=S4t4Drbgx1P3k47F&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F12HJsH9KkY8%2F#", "_blank"));
-    cuadro4.addEventListener("click", () => window.open("https://www.promiedos.com.ar", "_blank"));
-
-    // Registra el Service Worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
-            .then((registration) => {
-                console.log('Service Worker registrado con éxito: ', registration);
-            })
-            .catch((error) => {
-                console.log('Error al registrar el Service Worker: ', error);
-            });
-    }
+document.getElementById("search-bar").addEventListener("input", function() {
+    let query = this.value.toLowerCase();
+    filterStats(query);
 });
+
+function filterStats(query) {
+    const rows = document.querySelectorAll("#team-stats tbody tr");
+    rows.forEach(row => {
+        const teamName = row.cells[0].textContent.toLowerCase();
+        if (teamName.includes(query)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
+
+// Función para cargar las estadísticas (puedes reemplazar esto con una API)
+function loadStats() {
+    const stats = [
+        { team: "Equipo A", games: 10, wins: 6, draws: 2, losses: 2 },
+        { team: "Equipo B", games: 10, wins: 5, draws: 3, losses: 2 },
+        { team: "Equipo C", games: 10, wins: 4, draws: 4, losses: 2 }
+    ];
+
+    const tableBody = document.querySelector("#team-stats tbody");
+    stats.forEach(stat => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${stat.team}</td>
+            <td>${stat.games}</td>
+            <td>${stat.wins}</td>
+            <td>${stat.draws}</td>
+            <td>${stat.losses}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+loadStats();
+
