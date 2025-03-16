@@ -3,22 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MesQueUnIdolo</title>
+    <title>Estadísticas de Fútbol</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <nav class="navbar">
-        <h1 class="titulo">MesQueUnIdolo</h1>
-    </nav>
-    
-    <div class="container">
-        <div class="cuadro" id="cuadro1">📧 Correo</div>
-        <div class="cuadro" id="cuadro2">🐦 Twitter</div>
-        <div class="cuadro" id="cuadro3">📖 Facebook</div>
-        <div class="cuadro" id="cuadro4">Promiedos</div>
-    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Equipos</a></li>
+                <li><a href="#">Jugadores</a></li>
+                <li><a href="#">Resultados</a></li>
+                <li><a href="#">Estadísticas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search">
+            <input type="text" id="search-bar" placeholder="Buscar equipo o jugador...">
+        </section>
+
+        <section class="statistics">
+            <h2>Estadísticas de Equipos</h2>
+            <table id="team-stats">
+                <thead>
+                    <tr>
+                        <th>Equipo</th>
+                        <th>Partidos Jugados</th>
+                        <th>Victorias</th>
+                        <th>Empates</th>
+                        <th>Derrotas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se llenarán las estadísticas con JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="latest-results">
+            <h2>Últimos Resultados</h2>
+            <ul id="results">
+                <!-- Aquí se agregarán los resultados de los partidos -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Estadísticas de Fútbol</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+
